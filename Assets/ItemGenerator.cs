@@ -1,33 +1,33 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class ItemGenerator : MonoBehaviour
 {
-    //carPrefab‚ğ“ü‚ê‚é
+    //carPrefabã‚’å…¥ã‚Œã‚‹
     public GameObject carPrefab;
-    //coinPrefab‚ğ“ü‚ê‚é
+    //coinPrefabã‚’å…¥ã‚Œã‚‹
     public GameObject coinPrefab;
-    //cornPrefab‚ğ“ü‚ê‚é
+    //cornPrefabã‚’å…¥ã‚Œã‚‹
     public GameObject conePrefab;
-    //ƒXƒ^[ƒg’n“_
+    //ã‚¹ã‚¿ãƒ¼ãƒˆåœ°ç‚¹
     private int startPos = 80;
-    //ƒS[ƒ‹’n“_
+    //ã‚´ãƒ¼ãƒ«åœ°ç‚¹
     private int goalPos = 360;
-    //ƒAƒCƒeƒ€‚ğo‚·x•ûŒü‚Ì”ÍˆÍ
+    //ã‚¢ã‚¤ãƒ†ãƒ ã‚’å‡ºã™xæ–¹å‘ã®ç¯„å›²
     private float posRange = 3.4f;
 
     // Use this for initialization
     void Start()
     {
-        //ˆê’è‚Ì‹——£‚²‚Æ‚ÉƒAƒCƒeƒ€‚ğ¶¬
+        //ä¸€å®šã®è·é›¢ã”ã¨ã«ã‚¢ã‚¤ãƒ†ãƒ ã‚’ç”Ÿæˆ
         for (int i = startPos; i < goalPos; i += 15)
         {
-            //‚Ç‚ÌƒAƒCƒeƒ€‚ğo‚·‚Ì‚©‚ğƒ‰ƒ“ƒ_ƒ€‚Éİ’è
+            //ã©ã®ã‚¢ã‚¤ãƒ†ãƒ ã‚’å‡ºã™ã®ã‹ã‚’ãƒ©ãƒ³ãƒ€ãƒ ã«è¨­å®š
             int num = Random.Range(1, 11);
             if (num <= 2)
             {
-                //ƒR[ƒ“‚ğx²•ûŒü‚Éˆê’¼ü‚É¶¬
+                //ã‚³ãƒ¼ãƒ³ã‚’xè»¸æ–¹å‘ã«ä¸€ç›´ç·šã«ç”Ÿæˆ
                 for (float j = -1; j <= 1; j += 0.4f)
                 {
                     GameObject cone = Instantiate(conePrefab);
@@ -37,23 +37,23 @@ public class ItemGenerator : MonoBehaviour
             else
             {
 
-                //ƒŒ[ƒ“‚²‚Æ‚ÉƒAƒCƒeƒ€‚ğ¶¬
+                //ãƒ¬ãƒ¼ãƒ³ã”ã¨ã«ã‚¢ã‚¤ãƒ†ãƒ ã‚’ç”Ÿæˆ
                 for (int j = -1; j <= 1; j++)
                 {
-                    //ƒAƒCƒeƒ€‚Ìí—Ş‚ğŒˆ‚ß‚é
+                    //ã‚¢ã‚¤ãƒ†ãƒ ã®ç¨®é¡ã‚’æ±ºã‚ã‚‹
                     int item = Random.Range(1, 11);
-                    //ƒAƒCƒeƒ€‚ğ’u‚­ZÀ•W‚ÌƒIƒtƒZƒbƒg‚ğƒ‰ƒ“ƒ_ƒ€‚Éİ’è
+                    //ã‚¢ã‚¤ãƒ†ãƒ ã‚’ç½®ãZåº§æ¨™ã®ã‚ªãƒ•ã‚»ãƒƒãƒˆã‚’ãƒ©ãƒ³ãƒ€ãƒ ã«è¨­å®š
                     int offsetZ = Random.Range(-5, 6);
-                    //60%ƒRƒCƒ“”z’u:30%Ô”z’u:10%‰½‚à‚È‚µ
+                    //60%ã‚³ã‚¤ãƒ³é…ç½®:30%è»Šé…ç½®:10%ä½•ã‚‚ãªã—
                     if (1 <= item && item <= 6)
                     {
-                        //ƒRƒCƒ“‚ğ¶¬
+                        //ã‚³ã‚¤ãƒ³ã‚’ç”Ÿæˆ
                         GameObject coin = Instantiate(coinPrefab);
                         coin.transform.position = new Vector3(posRange * j, coin.transform.position.y, i + offsetZ);
                     }
                     else if (7 <= item && item <= 9)
                     {
-                        //Ô‚ğ¶¬
+                        //è»Šã‚’ç”Ÿæˆ
                         GameObject car = Instantiate(carPrefab);
                         car.transform.position = new Vector3(posRange * j, car.transform.position.y, i + offsetZ);
                     }
