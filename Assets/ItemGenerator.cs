@@ -17,12 +17,28 @@ public class ItemGenerator : MonoBehaviour
     //アイテムを出すx方向の範囲
     private float posRange = 3.4f;
 
+    private GameObject unityChan; //unityちゃん
+    public int itemGenerationDistanceMaximum = 20; // アイテムを生成する距離最大（unityちゃんから）
+    public int itemGenerationDistanceInterval = 15; // アイテムを生成する間隔
+    public int lastGeneratePosition = 40;　// 最後にアイテムを生成した位置。スタート直後の空白を兼ねる
+
     // Use this for initialization
     void Start()
     {
-        //一定の距離ごとにアイテムを生成
-        for (int i = startPos; i < goalPos; i += 15)
+        unityChan = GameObject.Find("unitychan");
+       // lastGeneratePosition = 50;
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        //最後に生成したアイテムとunityちゃんまでの距離に応じて新規アイテムを生成する。ゴールより向こうにはおかない
+        if ((unityChan.transform.position.z + itemGenerationDistanceMaximum > lastGeneratePosition) & (unityChan.transform.position.z + itemGenerationDistanceMaximum + +itemGenerationDistanceInterval < goalPos))
         {
+        
+            int i = lastGeneratePosition + itemGenerationDistanceInterval;  //元プログラムの変数iを流用したい
+            lastGeneratePosition += itemGenerationDistanceInterval;　//最後アイテムの位置を更新する
+
             //どのアイテムを出すのかをランダムに設定
             int num = Random.Range(1, 11);
             if (num <= 2)
@@ -60,11 +76,5 @@ public class ItemGenerator : MonoBehaviour
                 }
             }
         }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
     }
 }

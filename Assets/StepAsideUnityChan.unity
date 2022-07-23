@@ -690,6 +690,9 @@ MonoBehaviour:
   carPrefab: {fileID: 3728221391330502759, guid: db330c18bd352624b9e2a4d4d0d49173, type: 3}
   coinPrefab: {fileID: 8526654631505224928, guid: 975ec94d039db774395aff0443bbafa7, type: 3}
   conePrefab: {fileID: 6345854497103306144, guid: 86a65f30e3ddda8499a1878b899677bc, type: 3}
+  itemGenerationDistanceMaximum: 40
+  itemGenerationDistanceInterval: 15
+  lastGeneratePosition: 40
 --- !u!4 &686704195
 Transform:
   m_ObjectHideFlags: 0
