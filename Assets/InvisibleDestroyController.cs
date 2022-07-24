@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -19,7 +19,7 @@ public class InvisibleDestroyController : MonoBehaviour
         //Debug.Log("uchan-pos " + this.unityChan.transform.position.x + "  " + this.unityChan.transform.position.y + "  " + this.unityChan.transform.position.z);
         //Debug.Log("my-pos " + this.transform.position.x + "  " + this.transform.position.y + "  " + this.transform.position.z);
 
-        //•¨‘Ì‚ÌˆÊ’u‚ªunity‚¿‚á‚ñ‚æ‚èŒã•ûiƒ}[ƒWƒ“‚İj‚É‚È‚Á‚½‚çÁ‚·
+        //ç‰©ä½“ã®ä½ç½®ãŒunityã¡ã‚ƒã‚“ã‚ˆã‚Šå¾Œæ–¹ï¼ˆãƒãƒ¼ã‚¸ãƒ³è¾¼ã¿ï¼‰ã«ãªã£ãŸã‚‰è‡ªã‚‰æ¶ˆãˆã‚‹
         if (this.unityChan.transform.position.z + objectDestroyMargin > this.transform.position.z)
         {
             Debug.Log("DESTROY " + this.gameObject.name);
@@ -27,7 +27,7 @@ public class InvisibleDestroyController : MonoBehaviour
         }
     }
 
-    /* ‚±‚ê‚ÍLesson”ÍˆÍŠO‚È‚Ì‚ÅƒiƒV
+    /* ã“ã‚Œã¯Lessonç¯„å›²å¤–ãªã®ã§ãƒŠã‚·
     void OnBecameInvisible()
     {
         Debug.Log("BecomeInvisible " + gameObject.name);

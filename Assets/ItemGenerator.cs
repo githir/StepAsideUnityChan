@@ -26,7 +26,7 @@ public class ItemGenerator : MonoBehaviour
     void Start()
     {
         unityChan = GameObject.Find("unitychan");
-       // lastGeneratePosition = 50;
+       // lastGeneratePosition = 40; //外から変えて試せるようpublicにしたので削除
     }
 
     // Update is called once per frame
@@ -37,7 +37,9 @@ public class ItemGenerator : MonoBehaviour
         {
         
             int i = lastGeneratePosition + itemGenerationDistanceInterval;  //元プログラムの変数iを流用したい
-            lastGeneratePosition += itemGenerationDistanceInterval;　//最後アイテムの位置を更新する
+            lastGeneratePosition += itemGenerationDistanceInterval;　//最後アイテムの位置を更新する。i=last… でも同じだが考え方を残しておくためこうする
+
+            //以下はコピペで流用したもの
 
             //どのアイテムを出すのかをランダムに設定
             int num = Random.Range(1, 11);
@@ -52,7 +54,6 @@ public class ItemGenerator : MonoBehaviour
             }
             else
             {
-
                 //レーンごとにアイテムを生成
                 for (int j = -1; j <= 1; j++)
                 {

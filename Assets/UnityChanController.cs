@@ -1,39 +1,39 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;  //（追加）
+using UnityEngine.UI;
 
 public class UnityChanController : MonoBehaviour
 {
     //アニメーションするためのコンポーネントを入れる
     private Animator myAnimator;
-    //Unityちゃんを移動させるコンポーネントを入れる（追加）
+    //Unityちゃんを移動させるコンポーネントを入れる
     private Rigidbody myRigidbody;
-    //前方向の速度（追加）
+    //前方向の速度
     //   public float velocityZ = 1.6f;
     public float velocityZ = 20.0f;
-    //横方向の速度（追加）
+    //横方向の速度
     private float velocityX = 10f;
-    //上方向の速度（追加））
+    //上方向の速度）
     //private float velocityY = 10f;
     private float velocityY = 6.0f;
-    //左右の移動できる範囲（追加）
+    //左右の移動できる範囲
     private float movableRange = 3.4f;
-    //動きを減速させる係数（追加）
+    //動きを減速させる係数
     private float coefficient = 0.99f;
-    //ゲーム終了の判定（追加）
+    //ゲーム終了の判定
     private bool isEnd = false;
-    //ゲーム終了時に表示するテキスト（追加）
+    //ゲーム終了時に表示するテキスト
     private GameObject stateText;
-    //スコアを表示するテキスト（追加）
+    //スコアを表示するテキスト
     private GameObject scoreText;
     //得点
     private int score = 0;
-    //左ボタン押下の判定（追加）
+    //左ボタン押下の判定
     private bool isLButtonDown = false;
-    //右ボタン押下の判定（追加）
+    //右ボタン押下の判定
     private bool isRButtonDown = false;
-    //ジャンプボタン押下の判定（追加）
+    //ジャンプボタン押下の判定
     private bool isJButtonDown = false;
 
     // Use this for initialization
@@ -45,20 +45,20 @@ public class UnityChanController : MonoBehaviour
         //走るアニメーションを開始
         this.myAnimator.SetFloat("Speed", 1);
 
-        //Rigidbodyコンポーネントを取得（追加）
+        //Rigidbodyコンポーネントを取得
         this.myRigidbody = GetComponent<Rigidbody>();
 
-        //シーン中のstateTextオブジェクトを取得（追加）
+        //シーン中のstateTextオブジェクトを取得
         this.stateText = GameObject.Find("GameResultText");
 
-        //シーン中のscoreTextオブジェクトを取得（追加）
+        //シーン中のscoreTextオブジェクトを取得
         this.scoreText = GameObject.Find("ScoreText");
     }
 
     // Update is called once per frame
     void Update()
     {
-        //ゲーム終了ならUnityちゃんの動きを減衰する（追加）
+        //ゲーム終了ならUnityちゃんの動きを減衰する
         if (this.isEnd)
         {
             this.velocityZ *= this.coefficient;
@@ -69,10 +69,10 @@ public class UnityChanController : MonoBehaviour
 
         //横方向の入力による速度
         float inputVelocityX = 0;
-        //上方向の入力による速度（追加）
+        //上方向の入力による速度
         float inputVelocityY = 0;
 
-        //Unityちゃんを矢印キーまたはボタンに応じて左右に移動させる（追加）
+        //Unityちゃんを矢印キーまたはボタンに応じて左右に移動させる
         if ((Input.GetKey(KeyCode.LeftArrow) || this.isLButtonDown) && -this.movableRange < this.transform.position.x)
         {
             //左方向への速度を代入
@@ -84,21 +84,21 @@ public class UnityChanController : MonoBehaviour
             inputVelocityX = this.velocityX;
         }
 
-        //ジャンプしていない時にスペースまたはボタンが押されたらジャンプする（追加）
+        //ジャンプしていない時にスペースまたはボタンが押されたらジャンプする
         if ((Input.GetKeyDown(KeyCode.Space) || this.isJButtonDown) && this.transform.position.y < 0.5f)
         {
-            //ジャンプアニメを再生（追加）
+            //ジャンプアニメを再生
             this.myAnimator.SetBool("Jump", true);
-            //上方向への速度を代入（追加）
+            //上方向への速度を代入
             inputVelocityY = this.velocityY;
         }
         else
         {
-            //現在のY軸の速度を代入（追加）
+            //現在のY軸の速度を代入
             inputVelocityY = this.myRigidbody.velocity.y;
         }
 
-        //Jumpステートの場合はJumpにfalseをセットする（追加）
+        //Jumpステートの場合はJumpにfalseをセットする
         if (this.myAnimator.GetCurrentAnimatorStateInfo(0).IsName("Jump"))
         {
             this.myAnimator.SetBool("Jump", false);
@@ -134,7 +134,7 @@ public class UnityChanController : MonoBehaviour
             // スコアを加算(追加)
             this.score += 10;
 
-            //ScoreTextに獲得した点数を表示(追加)
+            //ScoreTextに獲得した点数を表示
             this.scoreText.GetComponent<Text>().text = "Score " + this.score + "pt";
 
             //パーティクルを再生
@@ -145,35 +145,35 @@ public class UnityChanController : MonoBehaviour
         }
     }
 
-    //ジャンプボタンを押した場合の処理（追加）
+    //ジャンプボタンを押した場合の処理
     public void GetMyJumpButtonDown()
     {
         this.isJButtonDown = true;
     }
 
-    //ジャンプボタンを離した場合の処理（追加）
+    //ジャンプボタンを離した場合の処理
     public void GetMyJumpButtonUp()
     {
         this.isJButtonDown = false;
     }
 
-    //左ボタンを押し続けた場合の処理（追加）
+    //左ボタンを押し続けた場合の処理
     public void GetMyLeftButtonDown()
     {
         this.isLButtonDown = true;
     }
-    //左ボタンを離した場合の処理（追加）
+    //左ボタンを離した場合の処理
     public void GetMyLeftButtonUp()
     {
         this.isLButtonDown = false;
     }
 
-    //右ボタンを押し続けた場合の処理（追加）
+    //右ボタンを押し続けた場合の処理
     public void GetMyRightButtonDown()
     {
         this.isRButtonDown = true;
     }
-    //右ボタンを離した場合の処理（追加）
+    //右ボタンを離した場合の処理
     public void GetMyRightButtonUp()
     {
         this.isRButtonDown = false;
